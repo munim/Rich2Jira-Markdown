@@ -137,3 +137,9 @@
   @apply text-muted-foreground pointer-events-none float-left h-0;
   content: attr(data-placeholder);
 }
+
+/* Display font for branding */
+.font-display {
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}

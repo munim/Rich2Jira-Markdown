@@ -3,6 +3,7 @@ import { ThemeProvider } from './hooks/useTheme'
 import { Header } from './components/Header'
 import { Editor } from './components/Editor'
 import { PreviewPanel } from './components/PreviewPanel'
+import { Footer } from './components/Footer'
 import { htmlToJira } from './converters/toJira'
 import { htmlToMarkdown } from './converters/toMarkdown'
 
@@ -32,6 +33,8 @@ function App() {
             <PreviewPanel jiraOutput={jiraOutput} markdownOutput={markdownOutput} />
           </div>
         </main>
+
+        <Footer />
       </div>
     </ThemeProvider>
   )
