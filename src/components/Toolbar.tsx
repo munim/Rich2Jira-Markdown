@@ -15,6 +15,7 @@ import {
   Code,
   Quote,
   Table,
+  MoreHorizontal,
   Rows3,
   Columns3,
   Trash2,
@@ -23,6 +24,13 @@ import {
 import { Toggle } from '@/components/ui/toggle'
 import { Separator } from '@/components/ui/separator'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 interface ToolbarProps {
   editor: Editor | null
@@ -34,7 +42,7 @@ export function Toolbar({ editor }: ToolbarProps) {
   const isInTable = editor.isActive('table')
 
   return (
-    <div className="flex flex-wrap items-center gap-1 border-b bg-card px-4 py-2">
+    <div className="flex flex-wrap items-center gap-1 border-b bg-card px-2 py-2 md:px-4">
       <Toggle
         size="sm"
         pressed={editor.isActive('bold')}
@@ -56,10 +64,12 @@ export function Toolbar({ editor }: ToolbarProps) {
       >
         <UnderlineIcon className="h-4 w-4" />
       </Toggle>
+
       <Toggle
         size="sm"
         pressed={editor.isActive('strike')}
         onPressedChange={() => editor.chain().focus().toggleStrike().run()}
+        className="hidden md:inline-flex"
       >
         <Strikethrough className="h-4 w-4" />
       </Toggle>
@@ -84,6 +94,7 @@ export function Toolbar({ editor }: ToolbarProps) {
         size="sm"
         pressed={editor.isActive('heading', { level: 3 })}
         onPressedChange={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+        className="hidden md:inline-flex"
       >
         <Heading3 className="h-4 w-4" />
       </Toggle>
@@ -91,6 +102,7 @@ export function Toolbar({ editor }: ToolbarProps) {
         size="sm"
         pressed={editor.isActive('heading', { level: 4 })}
         onPressedChange={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+        className="hidden md:inline-flex"
       >
         <Heading4 className="h-4 w-4" />
       </Toggle>
@@ -98,6 +110,7 @@ export function Toolbar({ editor }: ToolbarProps) {
         size="sm"
         pressed={editor.isActive('heading', { level: 5 })}
         onPressedChange={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
+        className="hidden md:inline-flex"
       >
         <Heading5 className="h-4 w-4" />
       </Toggle>
@@ -105,6 +118,7 @@ export function Toolbar({ editor }: ToolbarProps) {
         size="sm"
         pressed={editor.isActive('heading', { level: 6 })}
         onPressedChange={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
+        className="hidden md:inline-flex"
       >
         <Heading6 className="h-4 w-4" />
       </Toggle>
@@ -126,12 +140,13 @@ export function Toolbar({ editor }: ToolbarProps) {
         <ListOrdered className="h-4 w-4" />
       </Toggle>
 
-      <Separator orientation="vertical" className="mx-1 h-6" />
+      <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
       <Toggle
         size="sm"
         pressed={editor.isActive('code')}
         onPressedChange={() => editor.chain().focus().toggleCode().run()}
+        className="hidden md:inline-flex"
       >
         <Code className="h-4 w-4" />
       </Toggle>
@@ -139,11 +154,12 @@ export function Toolbar({ editor }: ToolbarProps) {
         size="sm"
         pressed={editor.isActive('blockquote')}
         onPressedChange={() => editor.chain().focus().toggleBlockquote().run()}
+        className="hidden md:inline-flex"
       >
         <Quote className="h-4 w-4" />
       </Toggle>
 
-      <Separator orientation="vertical" className="mx-1 h-6" />
+      <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
       <Button
         variant="ghost"
@@ -155,13 +171,14 @@ export function Toolbar({ editor }: ToolbarProps) {
 
       {isInTable && (
         <>
-          <Separator orientation="vertical" className="mx-1 h-6" />
+          <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
           <Button
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().addRowBefore().run()}
             title="Add row above"
+            className="hidden md:inline-flex"
           >
             <Rows3 className="h-4 w-4 mr-1" />
             <Plus className="h-3 w-3" />
@@ -173,6 +190,7 @@ export function Toolbar({ editor }: ToolbarProps) {
             size="sm"
             onClick={() => editor.chain().focus().addRowAfter().run()}
             title="Add row below"
+            className="hidden md:inline-flex"
           >
             <Rows3 className="h-4 w-4 mr-1" />
             <Plus className="h-3 w-3" />
@@ -184,18 +202,20 @@ export function Toolbar({ editor }: ToolbarProps) {
             size="sm"
             onClick={() => editor.chain().focus().deleteRow().run()}
             title="Delete row"
+            className="hidden md:inline-flex"
           >
             <Rows3 className="h-4 w-4 mr-1" />
             <Trash2 className="h-3 w-3" />
           </Button>
 
-          <Separator orientation="vertical" className="mx-1 h-6" />
+          <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
           <Button
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().addColumnBefore().run()}
             title="Add column left"
+            className="hidden md:inline-flex"
           >
             <Columns3 className="h-4 w-4 mr-1" />
             <Plus className="h-3 w-3" />
@@ -207,6 +227,7 @@ export function Toolbar({ editor }: ToolbarProps) {
             size="sm"
             onClick={() => editor.chain().focus().addColumnAfter().run()}
             title="Add column right"
+            className="hidden md:inline-flex"
           >
             <Columns3 className="h-4 w-4 mr-1" />
             <Plus className="h-3 w-3" />
@@ -218,24 +239,99 @@ export function Toolbar({ editor }: ToolbarProps) {
             size="sm"
             onClick={() => editor.chain().focus().deleteColumn().run()}
             title="Delete column"
+            className="hidden md:inline-flex"
           >
             <Columns3 className="h-4 w-4 mr-1" />
             <Trash2 className="h-3 w-3" />
           </Button>
 
-          <Separator orientation="vertical" className="mx-1 h-6" />
+          <Separator orientation="vertical" className="mx-1 h-6 hidden md:block" />
 
           <Button
             variant="ghost"
             size="sm"
             onClick={() => editor.chain().focus().deleteTable().run()}
             title="Delete table"
+            className="hidden md:inline-flex"
           >
             <Table className="h-4 w-4 mr-1" />
             <Trash2 className="h-3 w-3" />
           </Button>
         </>
       )}
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="sm" className="md:hidden">
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={() => editor.chain().focus().toggleStrike().run()}>
+            <Strikethrough className="h-4 w-4 mr-2" />
+            Strikethrough
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}>
+            <Heading3 className="h-4 w-4 mr-2" />
+            Heading 3
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}>
+            <Heading4 className="h-4 w-4 mr-2" />
+            Heading 4
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}>
+            <Heading5 className="h-4 w-4 mr-2" />
+            Heading 5
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}>
+            <Heading6 className="h-4 w-4 mr-2" />
+            Heading 6
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => editor.chain().focus().toggleCode().run()}>
+            <Code className="h-4 w-4 mr-2" />
+            Code
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => editor.chain().focus().toggleBlockquote().run()}>
+            <Quote className="h-4 w-4 mr-2" />
+            Blockquote
+          </DropdownMenuItem>
+          {isInTable && (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => editor.chain().focus().addRowBefore().run()}>
+                <Rows3 className="h-4 w-4 mr-2" />
+                Add row above
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => editor.chain().focus().addRowAfter().run()}>
+                <Rows3 className="h-4 w-4 mr-2" />
+                Add row below
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => editor.chain().focus().deleteRow().run()}>
+                <Trash2 className="h-4 w-4 mr-2" />
+                Delete row
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => editor.chain().focus().addColumnBefore().run()}>
+                <Columns3 className="h-4 w-4 mr-2" />
+                Add column left
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => editor.chain().focus().addColumnAfter().run()}>
+                <Columns3 className="h-4 w-4 mr-2" />
+                Add column right
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => editor.chain().focus().deleteColumn().run()}>
+                <Trash2 className="h-4 w-4 mr-2" />
+                Delete column
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => editor.chain().focus().deleteTable().run()}>
+                <Trash2 className="h-4 w-4 mr-2" />
+                Delete table
+              </DropdownMenuItem>
+            </>
+          )}
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   )
 }

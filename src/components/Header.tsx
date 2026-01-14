@@ -12,15 +12,15 @@ export function Header() {
 
   return (
     <header className="border-b bg-card">
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-4 py-3 md:px-6 md:py-4">
         <div>
-          <h1 className="text-2xl font-bold text-primary font-display">Rich2Jira</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-xl md:text-2xl font-bold text-primary font-display">Rich2Jira</h1>
+          <p className="text-xs md:text-sm text-muted-foreground">
             Convert rich text to Jira Wiki & Markdown
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
           <AboutDialog />
           <Button variant="outline" size="icon" onClick={toggleTheme}>
             <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
