@@ -5,87 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rich2Jira - Convert Rich Text to Jira Wiki & Markdown</title>
-    <meta name="description" content="WYSIWYG editor for converting rich text to Jira Wiki Markup and Markdown. Clean, minimal interface with live preview." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="description" content="WYSIWYG editor for converting rich text to Jira Wiki Markup and Markdown. Beautiful, accessible interface with live preview." />
   </head>
   <body>
-    <div id="app" x-data="appStore" x-cloak>
-      <!-- Header -->
-      <header class="app-header">
-        <div class="header-content">
-          <h1 class="app-title">Rich2Jira</h1>
-          <p class="app-subtitle">Convert rich text to Jira Wiki & Markdown</p>
-        </div>
-        <button 
-          @click="toggleTheme" 
-          class="theme-toggle"
-          :aria-label="theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
-        >
-          <span x-show="theme === 'light'">🌙</span>
-          <span x-show="theme === 'dark'">☀️</span>
-        </button>
-      </header>
-
-      <!-- Toolbar -->
-      <div class="toolbar" id="toolbar"></div>
-
-      <!-- Main Content: Side-by-side layout -->
-      <main class="main-content">
-        <!-- Editor Panel -->
-        <section class="editor-panel">
-          <div class="panel-header">
-            <h2>Editor</h2>
-          </div>
-          <div id="editor" class="editor-content"></div>
-        </section>
-
-        <!-- Preview Panel -->
-        <section class="preview-panel">
-          <div class="panel-header">
-            <div class="tab-buttons">
-              <button 
-                @click="activeTab = 'jira'" 
-                :class="{ active: activeTab === 'jira' }"
-                class="tab-button"
-              >
-                Jira Wiki
-              </button>
-              <button 
-                @click="activeTab = 'markdown'" 
-                :class="{ active: activeTab === 'markdown' }"
-                class="tab-button"
-              >
-                Markdown
-              </button>
-            </div>
-          </div>
-          
-          <!-- Jira Preview -->
-          <div x-show="activeTab === 'jira'" class="preview-content">
-            <div class="preview-actions">
-              <button @click="copyToClipboard('jira')" class="copy-button">
-                <span x-show="!copiedJira">📋 Copy</span>
-                <span x-show="copiedJira">✅ Copied!</span>
-              </button>
-            </div>
-            <pre class="output-text" x-text="jiraOutput"></pre>
-          </div>
-
-          <!-- Markdown Preview -->
-          <div x-show="activeTab === 'markdown'" class="preview-content">
-            <div class="preview-actions">
-              <button @click="copyToClipboard('markdown')" class="copy-button">
-                <span x-show="!copiedMarkdown">📋 Copy</span>
-                <span x-show="copiedMarkdown">✅ Copied!</span>
-              </button>
-            </div>
-            <pre class="output-text" x-text="markdownOutput"></pre>
-          </div>
-        </section>
-      </main>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

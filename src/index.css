@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47% 11%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16% 47%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83% 53%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91% 60%;
+    --primary-foreground: 222.2 47% 11%;
+    --secondary: 217.2 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217.2 32% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32% 17%;
+    --input: 217.2 32% 17%;
+    --ring: 224.3 76% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+.tiptap {
+  @apply outline-none min-h-[300px] p-4;
+}
+
+.tiptap > * + * {
+  @apply mt-3;
+}
+
+.tiptap h1 {
+  @apply text-3xl font-bold mt-6 mb-2;
+}
+
+.tiptap h2 {
+  @apply text-2xl font-bold mt-5 mb-2;
+}
+
+.tiptap h3 {
+  @apply text-xl font-semibold mt-4 mb-2;
+}
+
+.tiptap h4, .tiptap h5, .tiptap h6 {
+  @apply font-semibold mt-3 mb-2;
+}
+
+.tiptap ul {
+  @apply list-disc pl-6;
+}
+
+.tiptap ol {
+  @apply list-decimal pl-6;
+}
+
+.tiptap li {
+  @apply my-1;
+}
+
+.tiptap code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-primary;
+}
+
+.tiptap pre {
+  @apply bg-muted p-4 rounded-lg overflow-x-auto;
+}
+
+.tiptap pre code {
+  @apply bg-transparent p-0 text-foreground;
+}
+
+.tiptap blockquote {
+  @apply border-l-4 border-primary pl-4 italic text-muted-foreground;
+}
+
+.tiptap a {
+  @apply text-primary underline cursor-pointer hover:text-primary/80;
+}
+
+.tiptap img {
+  @apply max-w-full h-auto rounded;
+}
+
+.tiptap table {
+  @apply border-collapse w-full my-4;
+}
+
+.tiptap table td,
+.tiptap table th {
+  @apply border border-border p-2 text-left;
+}
+
+.tiptap table th {
+  @apply bg-muted font-semibold;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  @apply text-muted-foreground pointer-events-none float-left h-0;
+  content: attr(data-placeholder);
+}
