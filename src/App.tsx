@@ -27,15 +27,15 @@ function App() {
       <div className="flex h-screen flex-col bg-background">
         <Header />
 
-        <main className="hidden md:flex flex-1 overflow-hidden">
-          <div className="flex w-1/2 flex-col border-r">
-            <div className="border-b bg-card px-4 py-2">
+        <main className="hidden md:flex flex-1 overflow-hidden min-h-0">
+          <div className="flex w-1/2 flex-col border-r min-h-0 overflow-hidden">
+            <div className="border-b bg-card px-4 py-2 shrink-0">
               <h2 className="text-sm font-semibold">Editor</h2>
             </div>
             <Editor onUpdate={handleEditorUpdate} />
           </div>
 
-          <div className="flex w-1/2 flex-col">
+          <div className="flex w-1/2 flex-col min-h-0 overflow-hidden">
             <PreviewPanel jiraOutput={jiraOutput} markdownOutput={markdownOutput} />
           </div>
         </main>
