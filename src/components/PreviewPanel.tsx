@@ -20,7 +20,7 @@ export function PreviewPanel({ jiraOutput, markdownOutput }: PreviewPanelProps) 
         </TabsList>
       </div>
 
-      <TabsContent value="jira" className="mt-0 flex-1 flex flex-col p-4">
+      <TabsContent value="jira" className="mt-0 flex-1 min-h-0 flex flex-col p-4">
         <div className="mb-3 flex items-center justify-between">
           <span className="text-sm font-medium text-muted-foreground">Jira Wiki Output</span>
           <Button
@@ -47,7 +47,7 @@ export function PreviewPanel({ jiraOutput, markdownOutput }: PreviewPanelProps) 
         </pre>
       </TabsContent>
 
-      <TabsContent value="markdown" className="mt-0 flex-1 flex flex-col p-4">
+      <TabsContent value="markdown" className="mt-0 flex-1 min-h-0 flex flex-col p-4">
         <div className="mb-3 flex items-center justify-between">
           <span className="text-sm font-medium text-muted-foreground">Markdown Output</span>
           <Button
