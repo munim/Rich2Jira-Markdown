@@ -12,17 +12,14 @@ export function PreviewPanel({ jiraOutput, markdownOutput }: PreviewPanelProps) 
   const { copiedText, copy } = useCopyToClipboard()
 
   return (
-    <Tabs defaultValue="jira" className="flex h-full flex-col">
-      <div className="border-b bg-card px-4 py-2">
+    <Tabs defaultValue="jira" className="flex h-full flex-col overflow-hidden">
+      <div className="flex shrink-0 items-center justify-between border-b bg-card px-4 py-2">
         <TabsList className="grid w-full max-w-[300px] grid-cols-2">
           <TabsTrigger value="jira">Jira Wiki</TabsTrigger>
           <TabsTrigger value="markdown">Markdown</TabsTrigger>
         </TabsList>
-      </div>
 
-      <TabsContent value="jira" className="mt-0 flex-1 min-h-0 flex flex-col p-4">
-        <div className="mb-3 flex items-center justify-between">
-          <span className="text-sm font-medium text-muted-foreground">Jira Wiki Output</span>
+        <TabsContent value="jira" className="mt-0 p-0 border-0">
           <Button
             variant={copiedText === jiraOutput ? 'default' : 'outline'}
             size="sm"
@@ -41,15 +38,9 @@ export function PreviewPanel({ jiraOutput, markdownOutput }: PreviewPanelProps) 
               </>
             )}
           </Button>
-        </div>
-        <pre className="flex-1 overflow-auto rounded-lg border bg-muted p-4 font-mono text-sm leading-relaxed">
-          {jiraOutput || 'Start typing in the editor to see output here...'}
-        </pre>
-      </TabsContent>
+        </TabsContent>
 
-      <TabsContent value="markdown" className="mt-0 flex-1 min-h-0 flex flex-col p-4">
-        <div className="mb-3 flex items-center justify-between">
-          <span className="text-sm font-medium text-muted-foreground">Markdown Output</span>
+        <TabsContent value="markdown" className="mt-0 p-0 border-0">
           <Button
             variant={copiedText === markdownOutput ? 'default' : 'outline'}
             size="sm"
@@ -68,8 +59,17 @@ export function PreviewPanel({ jiraOutput, markdownOutput }: PreviewPanelProps) 
               </>
             )}
           </Button>
-        </div>
-        <pre className="flex-1 overflow-auto rounded-lg border bg-muted p-4 font-mono text-sm leading-relaxed">
+        </TabsContent>
+      </div>
+
+      <TabsContent value="jira" className="mt-0 flex-1 min-h-0 overflow-hidden p-4">
+        <pre className="h-full overflow-auto rounded-lg border bg-muted p-4 font-mono text-sm leading-relaxed">
+          {jiraOutput || 'Start typing in the editor to see output here...'}
+        </pre>
+      </TabsContent>
+
+      <TabsContent value="markdown" className="mt-0 flex-1 min-h-0 overflow-hidden p-4">
+        <pre className="h-full overflow-auto rounded-lg border bg-muted p-4 font-mono text-sm leading-relaxed">
           {markdownOutput || 'Start typing in the editor to see output here...'}
         </pre>
       </TabsContent>

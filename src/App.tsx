@@ -35,7 +35,7 @@ function App() {
             <Editor onUpdate={handleEditorUpdate} />
           </div>
 
-          <div className="flex w-1/2 flex-col min-h-0">
+          <div className="flex w-1/2 flex-col h-full min-h-0">
             <PreviewPanel jiraOutput={jiraOutput} markdownOutput={markdownOutput} />
           </div>
         </main>
